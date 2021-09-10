@@ -16,9 +16,9 @@ void destroyDynamicArray(DynamicArray *dynamicArray);
  * and 0 upon failure. */
 int growDynamicArray(DynamicArray *dynamicArray);
 
-/* Returns the value at the specified index without bounds checking. */
+/* Returns the value at the specified index. Exits if index out of bounds. */
 int getValueDynamicArray(DynamicArray *dynamicArray, unsigned int index);
-/* Sets the value at the specified index without bounds checking. Does not increment
+/* Sets the value at the specified index. Exits if index out of bounds. Does not increment
  * length. Does not grow DynamicArray. Only use it for mutating values within bounds. */
 void setValueDynamicArray(DynamicArray *dynamicArray, unsigned int index, int value);
 /* Pushes the value at the end of the array. Increments length. Grows DynamicArray. 
@@ -27,11 +27,11 @@ int pushValueDynamicArray(DynamicArray *dynamicArray, int value);
 /* Pops a value off from the end of the array and returns it */
 int popValueDynamicArray(DynamicArray *dynamicArray);
 /* Inserts a value at the specified index by pushing existing values to the right.
- * Increments length. Grows DynamicArray. Returns 1 upon success and 0 upon failure
- * (while growing). */
+ * Exits if index out of bounds. Increments length. Grows DynamicArray. 
+ * Returns 1 upon success and 0 upon failure (while growing). */
 int insertValueDynamicArray(DynamicArray *dynamicArray, unsigned int index, int value);
 /* Removes a value at the specified index by pulling existing values to the left.
- * Returns the removed value. */
+ * Exits if index out of bounds. Returns the removed value. */
 int removeValueDynamicArray(DynamicArray *dynamicArray, unsigned int index);
 
 #endif

@@ -57,11 +57,17 @@ int growDynamicArray(DynamicArray *dynamicArray)
 
 int getValueDynamicArray(DynamicArray *dynamicArray, unsigned int index)
 {
+	if (index >= dynamicArray->length)
+		exit(1);
+
 	return *(dynamicArray->data + index);
 }
 
 void setValueDynamicArray(DynamicArray *dynamicArray, unsigned int index, int value)
 {
+	if (index >= dynamicArray->length)
+		exit(1);
+
 	*(dynamicArray->data + index) = value;
 }
 
@@ -86,6 +92,9 @@ int popValueDynamicArray(DynamicArray *dynamicArray)
 
 int insertValueDynamicArray(DynamicArray *dynamicArray, unsigned int index, int value)
 {
+	if (index > dynamicArray->length)
+		exit(1);
+
 	if (dynamicArray->length == dynamicArray->capacity)
 		if (!growDynamicArray(dynamicArray))
 			return 0;
@@ -101,6 +110,9 @@ int insertValueDynamicArray(DynamicArray *dynamicArray, unsigned int index, int 
 
 int removeValueDynamicArray(DynamicArray *dynamicArray, unsigned int index)
 {
+	if (index >= dynamicArray->length)
+		exit(1);
+
 	int *data = dynamicArray->data;
 	int removedValue = *(data + index);
 

@@ -42,6 +42,14 @@ int main(void)
 	removeValueDynamicArray(dynamicArray, 2);
 	printDynamicArray(dynamicArray);
 
+	printf("Inserting 99 at index 5\n");
+	insertValueDynamicArray(dynamicArray, 5, 99);
+	printDynamicArray(dynamicArray);
+
+	printf("Removing value at index 5\n");
+	removeValueDynamicArray(dynamicArray, 5);
+	printDynamicArray(dynamicArray);
+
 	printf("Setting value at index 2 to 99\n");
 	setValueDynamicArray(dynamicArray, 2, 99);
 	printDynamicArray(dynamicArray);
