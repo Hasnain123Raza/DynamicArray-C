@@ -1,6 +1,12 @@
-#include <stdlib.h>
-
 #include "DynamicArray.h"
+
+void terminate(const char *message)
+{
+	printf("%s", message);
+	exit(EXIT_FAILURE);
+}
+
+
 
 DynamicArray *createDynamicArray(unsigned int initialCapacity)
 {
@@ -58,7 +64,7 @@ int growDynamicArray(DynamicArray *dynamicArray)
 int getValueDynamicArray(DynamicArray *dynamicArray, unsigned int index)
 {
 	if (index >= dynamicArray->length)
-		exit(1);
+		terminate("Attempt to get value at an index out of bounds\n");
 
 	return *(dynamicArray->data + index);
 }
@@ -66,7 +72,7 @@ int getValueDynamicArray(DynamicArray *dynamicArray, unsigned int index)
 void setValueDynamicArray(DynamicArray *dynamicArray, unsigned int index, int value)
 {
 	if (index >= dynamicArray->length)
-		exit(1);
+		terminate("Attempt to set value at an index out of bounds\n");
 
 	*(dynamicArray->data + index) = value;
 }
@@ -93,7 +99,7 @@ int popValueDynamicArray(DynamicArray *dynamicArray)
 int insertValueDynamicArray(DynamicArray *dynamicArray, unsigned int index, int value)
 {
 	if (index > dynamicArray->length)
-		exit(1);
+		terminate("Attempt to insert value at an index out of bounds\n");
 
 	if (dynamicArray->length == dynamicArray->capacity)
 		if (!growDynamicArray(dynamicArray))
@@ -111,7 +117,7 @@ int insertValueDynamicArray(DynamicArray *dynamicArray, unsigned int index, int 
 int removeValueDynamicArray(DynamicArray *dynamicArray, unsigned int index)
 {
 	if (index >= dynamicArray->length)
-		exit(1);
+		terminate("Attempt to remove value at an index out of bounds\n");
 
 	int *data = dynamicArray->data;
 	int removedValue = *(data + index);

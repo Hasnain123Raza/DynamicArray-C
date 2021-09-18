@@ -1,7 +1,10 @@
-#if !defined(DYNAMICARRAY_H)
+#ifndef DYNAMICARRAY_H
 #define DYNAMICARRAY_H
 
-typedef struct DynamicArray {
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef struct {
 	unsigned int capacity;
 	unsigned int length;
 	int *data;
