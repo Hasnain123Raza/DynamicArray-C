@@ -27,7 +27,8 @@ void setValueDynamicArray(DynamicArray *dynamicArray, unsigned int index, int va
 /* Pushes the value at the end of the array. Increments length. Grows DynamicArray. 
  * Returns 1 upon success and 0 upon failure (while growing). */
 int pushValueDynamicArray(DynamicArray *dynamicArray, int value);
-/* Pops a value off from the end of the array and returns it */
+/* Pops a value off from the end of the array and returns it. Exits if the length
+ * of the DynamicArray is 0 */
 int popValueDynamicArray(DynamicArray *dynamicArray);
 /* Inserts a value at the specified index by pushing existing values to the right.
  * Exits if index out of bounds. Increments length. Grows DynamicArray. 

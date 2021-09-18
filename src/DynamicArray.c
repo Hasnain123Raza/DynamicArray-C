@@ -90,6 +90,9 @@ int pushValueDynamicArray(DynamicArray *dynamicArray, int value)
 
 int popValueDynamicArray(DynamicArray *dynamicArray)
 {
+	if (dynamicArray->length == 0)
+		terminate("Attempt to pop an empty list\n");
+
 	int poppedValue = *(dynamicArray->data + dynamicArray->length - 1);
 	dynamicArray->length--;
 
