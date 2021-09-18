@@ -1,12 +1,14 @@
 #include "DynamicArray.h"
 
+/* Utility Functions */
+
 void terminate(const char *message)
 {
 	printf("%s", message);
 	exit(EXIT_FAILURE);
 }
 
-
+/* Constructor and Destructor */
 
 DynamicArray *createDynamicArray(unsigned int initialCapacity)
 {
@@ -36,30 +38,7 @@ void destroyDynamicArray(DynamicArray *dynamicArray)
 	free(dynamicArray);
 }
 
-int growDynamicArray(DynamicArray *dynamicArray)
-{
-	int newCapacity = dynamicArray->capacity * 2;
-
-	int *newData = (int*) calloc(newCapacity, sizeof(int));
-
-	if (!newData)
-	{
-		free(newData);
-		return 0;
-	}
-
-	int *oldData = dynamicArray->data;
-	for (int counter = 0; counter < dynamicArray->capacity; counter++)
-		*(newData + counter) = *(oldData + counter);
-
-	free(oldData);
-	dynamicArray->data = newData;
-	dynamicArray->capacity = newCapacity;
-
-	return 1;
-}
-
-
+/* List Abstract Data Type Functions */
 
 int getValueDynamicArray(DynamicArray *dynamicArray, unsigned int index)
 {
@@ -131,3 +110,30 @@ int removeValueDynamicArray(DynamicArray *dynamicArray, unsigned int index)
 	dynamicArray->length--;
 	return removedValue;	
 }
+
+/* Dynamic Array Functions */
+
+int growDynamicArray(DynamicArray *dynamicArray)
+{
+	int newCapacity = dynamicArray->capacity * 2;
+
+	int *newData = (int*) calloc(newCapacity, sizeof(int));
+
+	if (!newData)
+	{
+		free(newData);
+		return 0;
+	}
+
+	int *oldData = dynamicArray->data;
+	for (int counter = 0; counter < dynamicArray->capacity; counter++)
+		*(newData + counter) = *(oldData + counter);
+
+	free(oldData);
+	dynamicArray->data = newData;
+	dynamicArray->capacity = newCapacity;
+
+	return 1;
+}
+
+

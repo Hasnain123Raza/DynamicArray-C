@@ -10,14 +10,15 @@ typedef struct {
 	int *data;
 } DynamicArray;
 
+/* Constructor and Destructor */
+
 /* Attempts to allocate a new DynamicArray structure with the specified initial capacity.
  * Returns a NULL value upon failure. */
 DynamicArray *createDynamicArray(unsigned int initialCapacity);
 /* Frees the specified DynamicArray */
 void destroyDynamicArray(DynamicArray *dynamicArray);
-/* Attempts to allocate more area to increase capacity by two. Returns 1 upon success
- * and 0 upon failure. */
-int growDynamicArray(DynamicArray *dynamicArray);
+
+/* List Abstract Data Type Functions */
 
 /* Returns the value at the specified index. Exits if index out of bounds. */
 int getValueDynamicArray(DynamicArray *dynamicArray, unsigned int index);
@@ -37,5 +38,11 @@ int insertValueDynamicArray(DynamicArray *dynamicArray, unsigned int index, int 
 /* Removes a value at the specified index by pulling existing values to the left.
  * Exits if index out of bounds. Returns the removed value. */
 int removeValueDynamicArray(DynamicArray *dynamicArray, unsigned int index);
+
+/* Dynamic Array Functions */
+
+/* Attempts to allocate more area to increase capacity by two. Returns 1 upon success
+ * and 0 upon failure. */
+int growDynamicArray(DynamicArray *dynamicArray);
 
 #endif
