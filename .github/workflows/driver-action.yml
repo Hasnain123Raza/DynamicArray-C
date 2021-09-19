@@ -9,7 +9,7 @@ jobs:
                           uses: actions/checkout@v2
 
                         - name: Make the Driver
-                          run: Make driver
+                          run: make driver
 
                         - name: Run the Driver
                           run: bin/driver
